@@ -1,0 +1,2 @@
+export const FETCH_PRODUCTS = "FETCH_FRODUCTS";
+export const UPDATE_CART = "UPDATE_CART";

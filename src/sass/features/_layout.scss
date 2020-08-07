@@ -1,0 +1,15 @@
+.app-layout {
+    background-color: $bright-gray;
+    height: 100vh;
+    overflow: auto;
+    .main-container {
+        width: 90vw;
+        margin: 0 auto;
+        max-width: 1250px;
+        min-height: 80%;
+    }
+    .header-container {
+        position: sticky;
+        top: 0;
+    }
+}
