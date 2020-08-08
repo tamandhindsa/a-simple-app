@@ -20,12 +20,9 @@ const Header = ({ addedProducts }) => {
       <Col className="name" onClick={() => history.push("/")}>
         {LAYOUT.APP_NAME}
       </Col>
-      <Col>
+      <Col onClick={handleCartClick} style={{ cursor: "pointer" }}>
         <Badge count={numberOfItems(addedProducts)}>
-          <ShoppingCartOutlined
-            onClick={handleCartClick}
-            style={{ fontSize: "30px", color: "white", cursor: "pointer" }}
-          />
+          <ShoppingCartOutlined style={{ fontSize: "30px", color: "white" }} />
         </Badge>
       </Col>
     </Row>

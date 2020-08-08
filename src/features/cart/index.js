@@ -36,34 +36,37 @@ const SectionOne = ({ checkoutPrice }) => (
 const SectionTwo = ({ addedItems, handleButtonClick }) => (
   <section style={{ paddingBottom: "10rem" }}>
     <hr className="added-items-hr" />
-    {addedItems.map(({ title, id, quantity, currencyFormat, price }) => (
-      <CartView
-        key={id}
-        {...{ title, handleButtonClick, id, quantity, key: id }}
-      >
-        <Row justify="start" align="middle">
-          <Col xs={24} sm={8}>
-            <strong>Quantity x {quantity}</strong>
-          </Col>
-          <Col xs={0} sm={8}>
-            <hr className="custom-vl" />
-          </Col>
-          <Col xs={24} sm={8}>
-            <strong>
-              Total Price is {currencyFormat} {Number(price) * Number(quantity)}
-            </strong>
-          </Col>
-        </Row>
-      </CartView>
-    ))}
+    {addedItems.map(
+      ({ title, id, quantity, currencyFormat, price, imageUrl }) => (
+        <CartView
+          key={id}
+          {...{ title, handleButtonClick, id, quantity, imageUrl, key: id }}
+        >
+          <Row justify="start" align="middle">
+            <Col xs={24} sm={8}>
+              <strong>Quantity x {quantity}</strong>
+            </Col>
+            <Col xs={0} sm={8}>
+              <hr className="custom-vl" />
+            </Col>
+            <Col xs={24} sm={8}>
+              <strong>
+                Total Price is {currencyFormat}
+                {Number(price) * Number(quantity)}
+              </strong>
+            </Col>
+          </Row>
+        </CartView>
+      )
+    )}
   </section>
 );
 
 const SectionThree = ({ removedItems }) => (
   <section>
     <hr className="removed-items-hr" />
-    {removedItems.map(({ title, id, quantity }) => (
-      <CartView {...{ title, quantity, key: id }}>
+    {removedItems.map(({ title, id, quantity, imageUrl }) => (
+      <CartView {...{ title, quantity, imageUrl, key: id }}>
         <strong>Quantity x {quantity}</strong>
       </CartView>
     ))}
