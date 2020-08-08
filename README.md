@@ -1,4 +1,4 @@
-## A simple e-commerce app made using the following:
+## A simple e-commerce app made using React JS and the following:
 
 1. Sass for stylesheets.
 2. React-Query for query/api management.
