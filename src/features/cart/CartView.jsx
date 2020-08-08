@@ -9,6 +9,7 @@ export const CartView = ({
   quantity,
   id,
   hideImage,
+  imageUrl,
 }) => {
   const isProductAdded = quantity !== 0;
 
@@ -17,6 +18,7 @@ export const CartView = ({
       cardProps={{ title }}
       hideImage={hideImage}
       customClassName={!isProductAdded && "disabled"}
+      imageUrl={imageUrl}
     >
       <Row justify="space-between" align="middle" gutter={6}>
         <Col span={handleButtonClick ? 20 : 24}>{children}</Col>

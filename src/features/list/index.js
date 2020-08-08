@@ -15,10 +15,12 @@ const List = ({ handleButtonClick }) => {
       <Heading> List of available products</Heading>
       <StatusBar isFetching={!isLoading && isFetching} />
       {status === REACTQUERY_API_STATES.LOADING && (
-        <CustomCard cardProps={{ loading: isLoading }}> Loading... </CustomCard>
+        <CustomCard cardProps={{ loading: isLoading }} hideImage>
+          Loading...
+        </CustomCard>
       )}
       {status === REACTQUERY_API_STATES.ERROR && (
-        <CustomCard> {error.message} </CustomCard>
+        <CustomCard hideImage> {error.message} </CustomCard>
       )}
       {status === REACTQUERY_API_STATES.SUCCESS &&
         data.map(({ id, ...rest }) => (

@@ -7,10 +7,11 @@ export const CustomCard = ({
   cardProps,
   customClassName,
   hideImage,
+  imageUrl,
 }) => (
   <div className="app-custom-card-container">
     <Card {...cardProps} className={`custom-card ${customClassName || ""}`}>
-      {!hideImage && <Image />}
+      {!hideImage && <Image src={imageUrl} />}
       {children}
     </Card>
   </div>
