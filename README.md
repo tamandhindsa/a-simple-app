@@ -1,6 +1,16 @@
+## A simple e-commerce app made using the following:
+
+1. Sass for stylesheets.
+2. React-Query for query/api management.
+3. Redux for global state management.
+4. Redix-persist for persisting the cart reducer.
+5. Axios for making REST api calls.
+6. Ant Design as UI framework.
+7. JSON server for mocking data.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+Available Scripts
 
 In the project directory, you can run:
 

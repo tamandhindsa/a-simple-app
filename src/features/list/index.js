@@ -1,13 +1,48 @@
 import React from "react";
-import { CART } from "../../router/urlMappings";
+import { connect } from "react-redux";
+import useProducts from "../shared/custom-hooks/useProducts";
+import { ProductView } from "./ProductView";
+import { StatusBar } from "./StatusBar";
+import { CustomCard } from "../shared/components/CustomCard";
+import { Heading } from "../shared/components/Heading";
+import { REACTQUERY_API_STATES } from "../../globals/utils/constants";
+import { addToCart } from "../../redux/actions/actions";
 
-const List = ({ history }) => {
+const List = ({ handleButtonClick }) => {
+  const { status, data, error, isLoading, isFetching } = useProducts();
   return (
-    <div>
-      Hi i am list
-      <button onClick={() => history.push(CART)}> Cl</button>
-    </div>
+    <>
+      <Heading> List of available products</Heading>
+      <StatusBar isFetching={!isLoading && isFetching} />
+      {status === REACTQUERY_API_STATES.LOADING && (
+        <CustomCard cardProps={{ loading: isLoading }}> Loading... </CustomCard>
+      )}
+      {status === REACTQUERY_API_STATES.ERROR && (
+        <CustomCard> {error.message} </CustomCard>
+      )}
+      {status === REACTQUERY_API_STATES.SUCCESS &&
+        data.map(({ id, ...rest }) => (
+          <ProductView {...{ key: id, handleButtonClick, id, ...rest }}>
+            <Items {...{ ...rest }} />
+          </ProductView>
+        ))}
+    </>
   );
 };
 
-export default List;
+const Items = ({ currencyFormat, isFreeShipping, price }) => (
+  <div>
+    <strong> Price: </strong>
+    {currencyFormat}
+    {price}
+    {isFreeShipping && <i>&nbsp;&nbsp;(Free shipping available)</i>}
+  </div>
+);
+
+const mapStateToProps = (state) => ({});
+
+const mapDispatchToProps = (dispatch) => ({
+  handleButtonClick: (payload) => dispatch(addToCart(payload)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(List);
