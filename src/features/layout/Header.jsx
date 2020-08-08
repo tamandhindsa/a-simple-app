@@ -11,7 +11,9 @@ export const Header = () => {
   const handleCartClick = () => history.push(CART);
   return (
     <Row justify="space-between" align="middle" className="app-header">
-      <Col className="name">{LAYOUT.APP_NAME}</Col>
+      <Col className="name" onClick={() => history.push("/")}>
+        {LAYOUT.APP_NAME}
+      </Col>
       <Col>
         <ShoppingCartOutlined
           onClick={handleCartClick}

@@ -25,6 +25,7 @@
     padding: 1rem 2rem;
     background-image: linear-gradient(to right, $gradient-gray-1, $gradient-gray-2);
     .name {
+        cursor: pointer;
         font-size: 20px;
         letter-spacing: 5px;
         text-shadow: -1px -1px 3px $dark-charcoal, 2px 2px 4px $black-1;

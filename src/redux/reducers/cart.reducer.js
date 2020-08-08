@@ -14,7 +14,7 @@ export default function (state = initialState, action) {
       const originalItemToBeUpdated = { [payload.id]: {} };
       if (originalItemToBeAdded) {
         originalItemToBeUpdated[payload.id] = {
-          ...originalItemToBeUpdated,
+          ...originalItemToBeAdded,
           quantity: originalItemToBeAdded.quantity + 1,
         };
       } else {
@@ -31,13 +31,14 @@ export default function (state = initialState, action) {
         },
       };
     case REMOVE_FROM_CART:
+      console.log("coming", payload);
       return {
         ...state,
         selectedItems: {
           ...state.selectedItems,
           [payload.id]: {
             ...state.selectedItems[payload.id],
-            quantity: Math.max(state.selectedItems.quantity - 1, 0),
+            quantity: Math.max(state.selectedItems[payload.id].quantity - 1, 0),
           },
         },
       };
