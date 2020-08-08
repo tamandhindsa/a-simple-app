@@ -1,7 +1,12 @@
 import React from "react";
+import { Heading } from "../shared/components/Heading";
 
 const Cart = () => {
-  return <div>Hi I am cart</div>;
+  return (
+    <>
+      <Heading> Cart Checkout </Heading>
+    </>
+  );
 };
 
 export default Cart;

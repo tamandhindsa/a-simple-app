@@ -1,20 +1,17 @@
 import React from "react";
 import useProducts from "../shared/custom-hooks/useProducts";
-import { Card, Row } from "antd";
+import { Card } from "antd";
 import { ProductView } from "./ProductView";
 import { StatusBar } from "./StatusBar";
 import { CustomCard } from "../shared/components/CustomCard";
 import { REACTQUERY_API_STATES } from "../../globals/utils/constants";
+import { Heading } from "../shared/components/Heading";
 
-const List = ({ history }) => {
+const List = () => {
   const { status, data, error, isLoading, isFetching } = useProducts();
   return (
     <>
-      <Row justify="center">
-        <h4>
-          <strong>List of available products</strong>
-        </h4>
-      </Row>
+      <Heading> List of available products</Heading>
       <StatusBar isFetching={!isLoading && isFetching} />
       {status === REACTQUERY_API_STATES.LOADING && (
         <CustomCard cardProps={{ loading: isLoading }}> Loading... </CustomCard>

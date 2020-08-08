@@ -5,7 +5,7 @@ import { Row, Col } from "antd";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 
-export const Layout = (props) => {
+export const Layout = () => {
   return (
     <div className="app-layout">
       <nav className="header-container">
