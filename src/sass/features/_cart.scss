@@ -1,5 +1,5 @@
 .app-cart-container {
-    @mixin custom-hr($content) {
+    @mixin custom-hr($content: "", $width: inherit) {
         line-height: 1em;
         position: relative;
         outline: 0;
@@ -8,6 +8,7 @@
         text-align: center;
         height: 1.5em;
         opacity: 0.5;
+        width: $width;
         &:before {
             content: "";
             background: linear-gradient(to right, transparent, #818078, transparent);
@@ -27,10 +28,17 @@
             background-color: $bright-gray;
         }
     }
+    .total-cost-hr {
+        @include custom-hr("Total Cost");
+    }
     .added-items-hr {
         @include custom-hr("Added Items");
     }
     .removed-items-hr {
         @include custom-hr("Removed Items");
+    }
+    .custom-vl {
+        @include custom-hr("", 4rem);
+        transform: rotate(90deg);
     }
 }

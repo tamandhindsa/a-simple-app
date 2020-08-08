@@ -31,7 +31,6 @@ export default function (state = initialState, action) {
         },
       };
     case REMOVE_FROM_CART:
-      console.log("coming", payload);
       return {
         ...state,
         selectedItems: {

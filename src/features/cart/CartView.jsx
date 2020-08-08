@@ -10,18 +10,21 @@ export const CartView = ({
   id,
 }) => {
   const isProductAdded = quantity !== 0;
+
   return (
     <CustomCard
       cardProps={{ title }}
       customClassName={!isProductAdded && "disabled"}
     >
       <Row justify="space-between" align="middle" gutter={6}>
-        <Col span={20}>{children}</Col>
-        <Col span={4}>
-          <Button onClick={() => handleButtonClick({ id })} type="dashed">
-            <Tooltip title="Remove From Cart">-</Tooltip>
-          </Button>
-        </Col>
+        <Col span={handleButtonClick ? 20 : 24}>{children}</Col>
+        {handleButtonClick && (
+          <Col span={4}>
+            <Button onClick={() => handleButtonClick({ id })} type="dashed">
+              <Tooltip title="Remove From Cart">-</Tooltip>
+            </Button>
+          </Col>
+        )}
       </Row>
     </CustomCard>
   );
