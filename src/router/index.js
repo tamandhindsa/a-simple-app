@@ -1,9 +1,9 @@
 import React from "react";
 import { Switch, Redirect, Route } from "react-router-dom";
-import { ERROR_404, CART } from "./urlMappings";
 import Cart from "../features/cart";
 import List from "../features/list";
 import { PageNotFound } from "../features/shared/pages/PageNotFound";
+import { ERROR_404, CART } from "./urlMappings";
 
 const MainRouter = () => (
   <div className="animate">
