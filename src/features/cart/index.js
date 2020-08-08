@@ -24,7 +24,7 @@ const Cart = (props) => {
 const SectionOne = ({ checkoutPrice }) => (
   <section style={{ paddingBottom: "10rem", textAlign: "center" }}>
     <hr className="total-cost-hr" />
-    <CartView>
+    <CartView hideImage>
       <strong>Checkout Price is ${checkoutPrice}</strong>
       <br />
       <br />
