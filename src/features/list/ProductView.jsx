@@ -19,17 +19,15 @@ export const ProductView = ({
     return handleButtonClick(obj);
   };
   return (
-    <div className="app-product-view">
-      <CustomCard cardProps={{ title }}>
-        <Row justify="space-between" align="middle" gutter={6}>
-          <Col span={20}>{children}</Col>
-          <Col span={4}>
-            <Button onClick={handleClick} type="dashed">
-              <Tooltip title="Add to cart">+</Tooltip>
-            </Button>
-          </Col>
-        </Row>
-      </CustomCard>
-    </div>
+    <CustomCard cardProps={{ title }}>
+      <Row justify="space-between" align="middle" gutter={6}>
+        <Col span={20}>{children}</Col>
+        <Col span={4}>
+          <Button onClick={handleClick} type="dashed">
+            <Tooltip title="Add to cart">+</Tooltip>
+          </Button>
+        </Col>
+      </Row>
+    </CustomCard>
   );
 };
