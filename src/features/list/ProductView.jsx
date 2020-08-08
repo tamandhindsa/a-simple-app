@@ -25,9 +25,11 @@ export const ProductView = ({
       <Row justify="space-between" align="middle" gutter={6}>
         <Col span={20}>{children}</Col>
         <Col span={4}>
-          <Button onClick={handleClick} type="dashed">
-            <Tooltip title="Add to cart">+</Tooltip>
-          </Button>
+          <Tooltip title="Add to cart">
+            <Button onClick={handleClick} type="dashed">
+              +
+            </Button>
+          </Tooltip>
         </Col>
       </Row>
     </CustomCard>

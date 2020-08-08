@@ -24,9 +24,11 @@ export const CartView = ({
         <Col span={handleButtonClick ? 20 : 24}>{children}</Col>
         {handleButtonClick && (
           <Col span={4}>
-            <Button onClick={() => handleButtonClick({ id })} type="dashed">
-              <Tooltip title="Remove From Cart">-</Tooltip>
-            </Button>
+            <Tooltip title="Remove From Cart">
+              <Button onClick={() => handleButtonClick({ id })} type="dashed">
+                -
+              </Button>
+            </Tooltip>
           </Col>
         )}
       </Row>
