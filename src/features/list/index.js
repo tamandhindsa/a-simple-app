@@ -1,6 +1,5 @@
 import React from "react";
 import useProducts from "../shared/custom-hooks/useProducts";
-import { Card } from "antd";
 import { ProductView } from "./ProductView";
 import { StatusBar } from "./StatusBar";
 import { CustomCard } from "../shared/components/CustomCard";
@@ -16,30 +15,25 @@ const List = () => {
       {status === REACTQUERY_API_STATES.LOADING && (
         <CustomCard cardProps={{ loading: isLoading }}> Loading... </CustomCard>
       )}
-      {status === REACTQUERY_API_STATES.ERROR && <Card> {error.message} </Card>}
+      {status === REACTQUERY_API_STATES.ERROR && (
+        <CustomCard> {error.message} </CustomCard>
+      )}
       {status === REACTQUERY_API_STATES.SUCCESS &&
-        data.map(
-          (
-            { id, currencyFormat, currencyId, isFreeShipping, price, title },
-            index
-          ) => (
-            <ProductView key={id} title={title}>
-              <Items {...{ currencyFormat, price, isFreeShipping }} />
-            </ProductView>
-          )
-        )}
+        data.map(({ id, currencyFormat, isFreeShipping, price, title }) => (
+          <ProductView key={id} title={title}>
+            <Items {...{ currencyFormat, price, isFreeShipping }} />
+          </ProductView>
+        ))}
     </>
   );
 };
 
 const Items = ({ currencyFormat, isFreeShipping, price }) => (
-  <>
-    <div>
-      <strong> Price: </strong> {price}
-      {currencyFormat}
-      {isFreeShipping && <i>&nbsp;&nbsp;(Free shipping available)</i>}
-    </div>
-  </>
+  <div>
+    <strong> Price: </strong> {price}
+    {currencyFormat}
+    {isFreeShipping && <i>&nbsp;&nbsp;(Free shipping available)</i>}
+  </div>
 );
 
 export default List;

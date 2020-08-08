@@ -1,5 +1,6 @@
 import { useQuery } from "react-query";
 import axios from "axios";
+import { REACT_QUERY_CONFIG } from "../../../globals/config/constants";
 
 const getProducts = async () => {
   const { data } = await axios.get(
@@ -9,5 +10,5 @@ const getProducts = async () => {
 };
 
 export default function useProducts() {
-  return useQuery("posts", getProducts);
+  return useQuery("posts", getProducts, REACT_QUERY_CONFIG);
 }
