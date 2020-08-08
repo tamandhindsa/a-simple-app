@@ -5,9 +5,9 @@
     #{$property}: $value;
 }
 
-.app-custom-card {
-    padding: 0.2rem 0.5rem;
-    .card {
+.app-custom-card-container {
+    padding: 0.4rem 0.5rem;
+    .custom-card {
         @include prefix(
             moz webkit,
             box-shadow,

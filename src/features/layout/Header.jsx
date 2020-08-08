@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { LAYOUT } from "../../globals/utils/constants";
 import { Row, Col } from "antd";
+import { LAYOUT } from "../../globals/utils/constants";
 
 export const Header = () => {
   return (

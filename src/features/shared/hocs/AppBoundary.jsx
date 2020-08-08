@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { Spin } from "antd";
 import { useLocation } from "react-router-dom";
 import { connect } from "react-redux";
+import { Spin } from "antd";
 
 const AppBoundary = ({ children, isLoading }) => {
   const { pathname } = useLocation();

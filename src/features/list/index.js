@@ -1,11 +1,10 @@
 import React from "react";
-import { CART } from "../../router/urlMappings";
 import useProducts from "../shared/custom-hooks/useProducts";
 import { Card, Row } from "antd";
-import { REACTQUERY_API_STATES } from "../../globals/utils/constants";
 import { ProductView } from "./ProductView";
 import { StatusBar } from "./StatusBar";
 import { CustomCard } from "../shared/components/CustomCard";
+import { REACTQUERY_API_STATES } from "../../globals/utils/constants";
 
 const List = ({ history }) => {
   const { status, data, error, isLoading, isFetching } = useProducts();
@@ -16,9 +15,7 @@ const List = ({ history }) => {
           <strong>List of available products</strong>
         </h4>
       </Row>
-      <button onClick={() => history.push(CART)}> Cl</button>
       <StatusBar isFetching={!isLoading && isFetching} />
-      <ProductView> I am card</ProductView>
       {status === REACTQUERY_API_STATES.LOADING && (
         <CustomCard cardProps={{ loading: isLoading }}> Loading... </CustomCard>
       )}
@@ -29,13 +26,23 @@ const List = ({ history }) => {
             { id, currencyFormat, currencyId, isFreeShipping, price, title },
             index
           ) => (
-            <ProductView key={id}>
-              {title} {price}
+            <ProductView key={id} title={title}>
+              <Items {...{ currencyFormat, price, isFreeShipping }} />
             </ProductView>
           )
         )}
     </>
   );
 };
+
+const Items = ({ currencyFormat, isFreeShipping, price }) => (
+  <>
+    <div>
+      <strong> Price: </strong> {price}
+      {currencyFormat}
+      {isFreeShipping && <i>&nbsp;&nbsp;(Free shipping available)</i>}
+    </div>
+  </>
+);
 
 export default List;
