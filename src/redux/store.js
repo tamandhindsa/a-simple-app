@@ -2,13 +2,13 @@ import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import { persistStore, persistReducer } from "redux-persist";
 import rootReducer from "./reducers/rootReducer";
-import storage from "redux-persist/lib/storage";
+import storageSession from "redux-persist/lib/storage/session";
 
 const middleware = [thunk];
 
 const persistConfig = {
   key: "cart",
-  storage: storage,
+  storage: storageSession,
   whitelist: ["cart"], // which reducer want to persist
 };
 
