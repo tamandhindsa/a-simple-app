@@ -6,7 +6,7 @@ const getProducts = async () => {
   const { data } = await axios.get(
     "https://my-json-server.typicode.com/tamandhindsa/demo/products"
   );
-  return data;
+  return data.slice(0, 10);
 };
 
 export default function useProducts() {

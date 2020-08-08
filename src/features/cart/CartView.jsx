@@ -8,12 +8,14 @@ export const CartView = ({
   handleButtonClick,
   quantity,
   id,
+  hideImage,
 }) => {
   const isProductAdded = quantity !== 0;
 
   return (
     <CustomCard
       cardProps={{ title }}
+      hideImage={hideImage}
       customClassName={!isProductAdded && "disabled"}
     >
       <Row justify="space-between" align="middle" gutter={6}>
