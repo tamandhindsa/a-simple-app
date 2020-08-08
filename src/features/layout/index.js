@@ -2,7 +2,7 @@ import React from "react";
 import { ReactQueryDevtools } from "react-query-devtools";
 import MainRouter from "../../router";
 import { Row, Col } from "antd";
-import { Header } from "./Header";
+import Header from "./Header";
 import { Footer } from "./Footer";
 
 export const Layout = () => {
