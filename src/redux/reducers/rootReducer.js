@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import list from "./list.reducer";
+import common from "./common.reducer";
 import cart from "./cart.reducer";
 
 export default combineReducers({
-  list,
+  common,
   cart,
 });

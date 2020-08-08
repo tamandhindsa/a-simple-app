@@ -23,7 +23,7 @@ const AppBoundary = ({ children, isLoading }) => {
 };
 
 const mapStateToProps = (state) => ({
-  isLoading: false,
+  isLoading: state.common.globalLoading,
 });
 
 export default connect(mapStateToProps)(AppBoundary);
