@@ -1,12 +1,14 @@
 import React from "react";
+import { connect } from "react-redux";
 import useProducts from "../shared/custom-hooks/useProducts";
 import { ProductView } from "./ProductView";
 import { StatusBar } from "./StatusBar";
 import { CustomCard } from "../shared/components/CustomCard";
-import { REACTQUERY_API_STATES } from "../../globals/utils/constants";
 import { Heading } from "../shared/components/Heading";
+import { REACTQUERY_API_STATES } from "../../globals/utils/constants";
+import { addToCart } from "../../redux/actions/actions";
 
-const List = () => {
+const List = ({ handleButtonClick }) => {
   const { status, data, error, isLoading, isFetching } = useProducts();
   return (
     <>
@@ -19,9 +21,9 @@ const List = () => {
         <CustomCard> {error.message} </CustomCard>
       )}
       {status === REACTQUERY_API_STATES.SUCCESS &&
-        data.map(({ id, currencyFormat, isFreeShipping, price, title }) => (
-          <ProductView key={id} title={title}>
-            <Items {...{ currencyFormat, price, isFreeShipping }} />
+        data.map(({ id, ...rest }) => (
+          <ProductView {...{ key: id, handleButtonClick, id, ...rest }}>
+            <Items {...{ ...rest }} />
           </ProductView>
         ))}
     </>
@@ -30,10 +32,17 @@ const List = () => {
 
 const Items = ({ currencyFormat, isFreeShipping, price }) => (
   <div>
-    <strong> Price: </strong> {price}
+    <strong> Price: </strong>
     {currencyFormat}
+    {price}
     {isFreeShipping && <i>&nbsp;&nbsp;(Free shipping available)</i>}
   </div>
 );
 
-export default List;
+const mapStateToProps = (state) => ({});
+
+const mapDispatchToProps = (dispatch) => ({
+  handleButtonClick: (payload) => dispatch(addToCart(payload)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(List);

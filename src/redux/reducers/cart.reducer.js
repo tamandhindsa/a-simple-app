@@ -1,17 +1,45 @@
-import { UPDATE_CART } from "../actions/action-types";
+import { ADD_TO_CART, REMOVE_FROM_CART } from "../actions/action-types";
 
 const initialState = {
-  items: [],
+  selectedItems: {},
   loaders: {},
   errors: {},
 };
 
 export default function (state = initialState, action) {
-  switch (action.type) {
-    case UPDATE_CART:
+  const { type, payload } = action;
+  switch (type) {
+    case ADD_TO_CART:
+      const originalItemToBeAdded = state.selectedItems[payload.id];
+      const originalItemToBeUpdated = { [payload.id]: {} };
+      if (originalItemToBeAdded) {
+        originalItemToBeUpdated[payload.id] = {
+          ...originalItemToBeUpdated,
+          quantity: originalItemToBeAdded.quantity + 1,
+        };
+      } else {
+        originalItemToBeUpdated[payload.id] = {
+          ...payload,
+          quantity: 1,
+        };
+      }
       return {
         ...state,
-        items: action.payload,
+        selectedItems: {
+          ...state.selectedItems,
+          ...originalItemToBeUpdated,
+        },
+      };
+    case REMOVE_FROM_CART:
+      return {
+        ...state,
+        selectedItems: {
+          ...state.selectedItems,
+          [payload.id]: {
+            ...state.selectedItems[payload.id],
+            quantity: Math.max(state.selectedItems.quantity - 1, 0),
+          },
+        },
       };
     default:
       return state;
