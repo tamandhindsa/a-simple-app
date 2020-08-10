@@ -11,6 +11,6 @@ export const getInactiveCartItems = ({ cart }) => {
 export const getCheckOutPrice = ({ cart }) => {
   const { selectedItems: items } = cart;
   return Object.values(items).reduce((value, item) => {
-    return value + Number(item.price) * Number(item.quantity);
+    return value + (Number(item.price) * Number(item.quantity));
   }, 0);
 };
